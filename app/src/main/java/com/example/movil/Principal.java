@@ -66,9 +66,6 @@ public class Principal extends AppCompatActivity {
                 dbHelper.addRegistro(usuario, mensaje);
 
                 
-                Cursor cursor = dbHelper.getReadableDatabase().rawQuery(
-                        "SELECT id, usuario, mensaje FROM registros ORDER BY id DESC LIMIT 1", null
-                );
 
                
                     tvUltimoRegistro.setText("Se ha guardado el Mensaje correctamente");
