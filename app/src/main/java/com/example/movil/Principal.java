@@ -70,19 +70,9 @@ public class Principal extends AppCompatActivity {
                         "SELECT id, usuario, mensaje FROM registros ORDER BY id DESC LIMIT 1", null
                 );
 
-                if (cursor.moveToFirst()) {
-                    int id = cursor.getInt(0);
-                    String userDB = cursor.getString(1);
-                    String mensajeDB = cursor.getString(2);
-
-                    tvUltimoRegistro.setText(
-                            "Último registro guardado:\n\n" +
-                                    "ID: " + id + "\n" +
-                                    "Usuario: " + userDB + "\n" +
-                                    "Mensaje: " + mensajeDB
-                    );
-                }
-                cursor.close();
+               
+                    tvUltimoRegistro.setText("Se ha guardado el Mensaje correctamente");
+                
 
                 Toast.makeText(Principal.this, "Registro guardado correctamente", Toast.LENGTH_SHORT).show();
                 etMensaje.setText("");
