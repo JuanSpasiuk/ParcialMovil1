@@ -35,23 +35,23 @@ public class Principal extends AppCompatActivity {
             return insets;
         });
 
-        // 🔹 Inicialización
+        
         tvBienvenida = findViewById(R.id.tvBienvenida);
         etMensaje = findViewById(R.id.etMensaje);
         btnGuardar = findViewById(R.id.btnGuardar);
         tvUltimoRegistro = findViewById(R.id.tvUltimoRegistro);
         dbHelper = new DBHelper(this);
 
-        // 🔹 Mostrar nombre del usuario
+        
         String usuario = getIntent().getStringExtra("usuario");
         tvBienvenida.setText("Bienvenido a Nike, " + usuario + "!");
 
-        // 🔹 Crear tabla si no existe (por seguridad, aunque DBHelper también lo hace)
+        
         dbHelper.getWritableDatabase().execSQL(
                 "CREATE TABLE IF NOT EXISTS registros (id INTEGER PRIMARY KEY AUTOINCREMENT, usuario TEXT, mensaje TEXT)"
         );
 
-        // 🔹 Guardar registro en la base
+       
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,10 +62,10 @@ public class Principal extends AppCompatActivity {
                     return;
                 }
 
-                // ✅ Guardar en la base de datos mediante el método del DBHelper
+                
                 dbHelper.addRegistro(usuario, mensaje);
 
-                // 🔹 Mostrar el último registro guardado (confirmación visual)
+                
                 Cursor cursor = dbHelper.getReadableDatabase().rawQuery(
                         "SELECT id, usuario, mensaje FROM registros ORDER BY id DESC LIMIT 1", null
                 );
