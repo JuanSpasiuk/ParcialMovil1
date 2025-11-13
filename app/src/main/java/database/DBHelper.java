@@ -20,13 +20,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // 🔹 Tabla principal de usuarios
+       
         db.execSQL("CREATE TABLE " + TABLE + " (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "nombre TEXT UNIQUE, " +
                 "contrasena TEXT)");
 
-        // 🔹 Crear también la tabla de registros (mensajes)
+        
         db.execSQL("CREATE TABLE IF NOT EXISTS registros (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "usuario TEXT, " +
@@ -40,7 +40,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // 🔹 Agregar nuevo usuario si no existe
+   
     public long addUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         long resultado = -1;
@@ -85,7 +85,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void addRegistro(String usuario, String mensaje) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        // Asegurar que la tabla exista (en caso de actualizaciones viejas)
+       
         db.execSQL("CREATE TABLE IF NOT EXISTS registros (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "usuario TEXT, " +
